@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de gestió de Sucursals</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container my-2">
+    <h1>Sistema de gestió de Sucursals</h1>
+    <h2>Oh oh! La pàgina que busques no existeix :(</h2>
+    <div th:if="${error != null}" class="alert alert-danger" th:text="${error}"></div>
+    <a th:href="@{/sucursal/v1/}"> Torna a la pàgina principal</a>
+</div>
+</body>
+</html>
