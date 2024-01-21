@@ -1,5 +1,8 @@
 package cat.itacademy.barcelonactiva.martos.sandra.s05.t01.n01.model.dto;
 
+import cat.itacademy.barcelonactiva.martos.sandra.s05.t01.n01.model.domain.Sucursal;
+import org.thymeleaf.util.StringUtils;
+
 import java.util.*;
 
 public class SucursalDTO {
@@ -12,11 +15,12 @@ public class SucursalDTO {
     public SucursalDTO() {
 
     }
-
-    public SucursalDTO(Integer pk_SucursalID, String nomSucursal, String paisSucursal) {
-        this.pk_SucursalID = pk_SucursalID;
-        this.nomSucursal = nomSucursal;
-        this.paisSucursal = paisSucursal;
+    public SucursalDTO(Sucursal sucursal){
+        this.pk_SucursalID = sucursal.getPk_SucursalID();
+        this.nomSucursal = sucursal.getNomSucursal();
+        String pais = sucursal.getPaisSucursal().toLowerCase();
+        this.paisSucursal = StringUtils.capitalizeWords(pais);
+        this.tipusSucursal = tipusPaisSucursal();
     }
 
     public Integer getPk_SucursalID() {
@@ -39,12 +43,16 @@ public class SucursalDTO {
         return paisSucursal;
     }
 
-    private void setPaisSucursal() {
+    public void setPaisSucursal(String paisSucursal) {
+        this.paisSucursal = paisSucursal;
+    }
+
+    private String tipusPaisSucursal() {
         if(isEU(this.paisSucursal)){
-            this.tipusSucursal = "EU";
+            return "EU";
         }
         else {
-            this.tipusSucursal = "Non EU";
+            return  "Non EU";
         }
     }
 
