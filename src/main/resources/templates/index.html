@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de gestió de Sucursals</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container my-2">
+    <h1>Sistema de gestió de Sucursals</h1>
+    <h2>Les meves sucursals</h2>
+    <p th:if="${notFoundError != null}" th:text="${notFoundError}" class="alert alert-danger"></p>
+    <div th:if="${deleted != null}" class="alert alert-info" th:text="${deleted}"></div>
+    <a href="add" class="btn btn-primary btn-sm mb-3"> Afegir sucursal </a>
+
+    <table border="1" class="table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>Nom sucursal</th>
+            <th>Pais sucursal</th>
+            <th>Tipus sucursal</th>
+            <th>Opcions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="sucursalDTO : ${listSucursals}">
+            <td th:text="${sucursalDTO.nomSucursal}"></td>
+            <td th:text="${sucursalDTO.paisSucursal}"></td>
+            <td th:text="${sucursalDTO.tipusSucursal}"></td>
+            <td>
+                <a th:href="@{./getOne/{id}(id=${sucursalDTO.pk_SucursalID})}" class="btn btn-primary">Detall</a>
+                <a th:href="@{./update/{id}(id=${sucursalDTO.pk_SucursalID})}" class="btn btn-primary">Actualitza</a>
+                <a th:href="@{./delete/{id}(id=${sucursalDTO.pk_SucursalID})}" class="btn btn-danger">Elimina</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+
+</html>
