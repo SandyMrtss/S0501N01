@@ -23,7 +23,7 @@
         <p style="color:red;" th:if="${#fields.hasGlobalErrors()}" th:errors="*{global}"></p>
     </form>
     <hr>
-
+    <a th:href="@{./}" class="btn btn-danger">Cancela</a>
     <a th:href="@{./}">Torna a la pàgina principal </a>
 </div>
 </body>

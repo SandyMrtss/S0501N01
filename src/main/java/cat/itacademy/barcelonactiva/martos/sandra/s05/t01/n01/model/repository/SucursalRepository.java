@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SucursalRepository extends JpaRepository<Sucursal, Integer> {
-    public Sucursal findByNomSucursal(String nom_sucursal);
+    public Sucursal findByNomSucursal(String nomSucursal);
 }

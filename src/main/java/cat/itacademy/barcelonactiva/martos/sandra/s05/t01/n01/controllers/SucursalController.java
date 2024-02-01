@@ -65,6 +65,13 @@ public class SucursalController {
     }
     @PostMapping("/update/{id}")
     public String updateSucursal(@PathVariable(value = "id") Integer id, @ModelAttribute("sucursal") @Valid Sucursal sucursal, BindingResult bindingResult, RedirectAttributes redirectAttributes){
+        Sucursal original = sucursalService.getOneSucursal(id);
+        if(!original.getNomSucursal().equalsIgnoreCase(sucursal.getNomSucursal())) {
+            Sucursal existing = sucursalService.findByName(sucursal.getNomSucursal());
+            if (existing != null) {
+                bindingResult.reject("nom.duplicated", "Ja existeix una sucursal amb aquest nom");
+            }
+        }
         if(bindingResult.hasErrors()){
             return "update_sucursal";
         }

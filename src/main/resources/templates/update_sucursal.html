@@ -22,14 +22,15 @@
         <p style="color:red;" th:if="${#fields.hasErrors('nomSucursal')}" th:errorclass="error" th:errors="*{nomSucursal}"></p>
         <input type="text" th:field="*{paisSucursal}" placeholder="Pais de la sucursal: " class="form-control mb-4 col-4" />
         <p style="color:red;" th:if="${#fields.hasErrors('paisSucursal')}" th:errorclass="error" th:errors="*{paisSucursal}"></p>
-
         <button type="submit" class="btn btn-info col-2"> Actualitza</button>
+        <p style="color:red;" th:if="${#fields.hasGlobalErrors()}" th:errors="*{global}"></p>
+
     </form>
     <hr />
     <a th:href="@{../getOne/{id}(id=${sucursal.pk_SucursalID})}" class="btn btn-primary">Detall</a>
 
-    <hr>
-
+    <hr />
+    <a th:href="@{../}" class="btn btn-danger">Cancela</a>
     <a th:href="@{../}"> Torna a la pàgina principal</a>
 </div>
 </body>
